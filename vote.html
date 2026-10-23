@@ -3,22 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#04070a">
+<meta name="theme-color" content="#f6f3ec">
 <title>投我一票 · 交给我，你放100个percent心</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=paper1">
 </head>
 <body>
 
-<canvas id="bg" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
-<div class="scanlines" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
-<div class="rec-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="progress" aria-hidden="true"></div>
-<div class="status" aria-hidden="true"><span class="dot"></span>REC <b id="tc">00:00:00:00</b></div>
-<canvas id="fx" aria-hidden="true"></canvas>
 
 <main class="page wrap">
   <div class="page-top">
@@ -34,8 +27,6 @@
   </div>
 
   <section class="vote-box reveal">
-    <span class="ring r1" aria-hidden="true"></span>
-    <span class="ring r2" aria-hidden="true"></span>
     <div class="vote-label">当前票数 / Votes</div>
     <div class="vote-num" id="voteNum">5</div>
     <div class="vote-hint">Live Counting</div>
@@ -48,8 +39,11 @@
     </button>
 
     <p class="vote-note">每一票都是信任，我会用行动兑现承诺。</p>
-    <span class="vote-corner l" aria-hidden="true">Signal / Verified</span>
-    <span class="vote-corner r" aria-hidden="true">Live · 2026</span>
+
+    <span class="seal" id="seal" aria-hidden="true">
+      <b>已投</b>
+      <i>Class 2026</i>
+    </span>
   </section>
 
   <div class="page-back">
@@ -81,96 +75,38 @@
   var dom = document.getElementById('voteNum');
   var btn = document.getElementById('voteBtn');
   var pop = document.getElementById('popup');
+  var seal = document.getElementById('seal');
 
   function paint(bump) {
     dom.textContent = num;
     if (bump) {
+      dom.classList.remove('bump');
+      void dom.offsetWidth;
       dom.classList.add('bump');
-      setTimeout(function () { dom.classList.remove('bump'); }, 320);
     }
   }
 
   var live = setInterval(function () { num++; paint(true); }, 2400);
 
-  /* 粒子 */
-  var cvs = document.getElementById('fx');
-  var ctx = cvs.getContext('2d');
-  var parts = [];
-  var running = false;
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-  function sizeCanvas() {
-    cvs.width = Math.floor(innerWidth * dpr);
-    cvs.height = Math.floor(innerHeight * dpr);
-    cvs.style.width = innerWidth + 'px';
-    cvs.style.height = innerHeight + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  sizeCanvas();
-  addEventListener('resize', sizeCanvas);
-
-  var COLORS = ['#5fe9da', '#9ff5ec', '#3fb8c9', '#ffffff', '#d8f7f3'];
-
-  function burst(x, y) {
-    for (var i = 0; i < 70; i++) {
-      var a = (Math.PI * 2 * i) / 70 + Math.random() * .3;
-      var sp = 2.2 + Math.random() * 7.4;
-      parts.push({
-        x: x, y: y,
-        vx: Math.cos(a) * sp,
-        vy: Math.sin(a) * sp - 1.4,
-        life: 1,
-        decay: .012 + Math.random() * .016,
-        r: 1 + Math.random() * 2.4,
-        c: COLORS[(Math.random() * COLORS.length) | 0]
-      });
-    }
-    if (!running) { running = true; requestAnimationFrame(tick); }
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-    for (var i = parts.length - 1; i >= 0; i--) {
-      var p = parts[i];
-      p.vx *= .975;
-      p.vy = p.vy * .975 + .11;
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life -= p.decay;
-      if (p.life <= 0) { parts.splice(i, 1); continue; }
-      ctx.globalAlpha = Math.max(p.life, 0);
-      ctx.fillStyle = p.c;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-    if (parts.length) {
-      requestAnimationFrame(tick);
-    } else {
-      running = false;
-      ctx.clearRect(0, 0, innerWidth, innerHeight);
-    }
-  }
-
   btn.addEventListener('click', function () {
-    var r = btn.getBoundingClientRect();
-    burst(r.left + r.width / 2, r.top + r.height / 2);
-
     num++;
     paint(true);
     clearInterval(live);
 
-    pop.classList.add('show');
-    pop.setAttribute('aria-hidden', 'false');
+    seal.classList.add('on');
+
+    setTimeout(function () {
+      pop.classList.add('show');
+      pop.setAttribute('aria-hidden', 'false');
+      document.getElementById('closePop').focus();
+    }, 620);
+
     btn.disabled = true;
-    document.getElementById('closePop').focus();
   });
 
   function closePop() {
     pop.classList.remove('show');
     pop.setAttribute('aria-hidden', 'true');
-    btn.focus();
   }
 
   document.getElementById('closePop').addEventListener('click', closePop);
