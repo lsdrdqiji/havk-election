@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#04070a">
+<meta name="description" content="2026 班委竞选 · 竞选团支部书记与学习委员。交给我，你放100个percent心。">
+<title>交给我，你放100个percent心 · 班委竞选 2026</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="rec-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="progress" aria-hidden="true"></div>
+
+<div class="boot" aria-hidden="true">
+  <div class="boot-mark">GYH · 2026</div>
+  <div class="boot-bar"><i></i></div>
+  <div class="boot-txt">Class Election System / Initializing</div>
+</div>
+
+<div class="status" aria-hidden="true"><span class="dot"></span>REC <b id="tc">00:00:00:00</b></div>
+<div class="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero wrap">
+  <div class="hero-inner">
+
+    <div class="hero-main">
+      <p class="eyebrow fade-up d1">2026 班委竞选 <em>/ CLASS ELECTION</em></p>
+
+      <h1 class="display">
+        <span class="ln"><span>交给我，</span></span>
+        <span class="ln"><span>你放<i class="num">100</i>个<em>percent</em>心</span></span>
+      </h1>
+
+      <p class="lede fade-up d2">
+        竞选团支部书记 &amp; 学习委员。<br>
+        以责任立身，以服务立信——把每一件小事做实，把每一句承诺兑现。
+      </p>
+
+      <ul class="tags fade-up d3">
+        <li>团支部书记</li>
+        <li>学习委员</li>
+        <li>2026</li>
+      </ul>
+    </div>
+
+    <aside class="subject fade-up d2" aria-label="竞选人档案">
+      <div class="subject-inner">
+        <div class="portrait">
+          <img src="assets/portrait-blue.jpg" alt="竞选人证件照" width="318" height="460">
+          <span class="tone" aria-hidden="true"></span>
+          <span class="scan" aria-hidden="true"></span>
+          <span class="cross" aria-hidden="true"></span>
+          <span class="tick tl" aria-hidden="true"></span>
+          <span class="tick tr" aria-hidden="true"></span>
+          <span class="tick bl" aria-hidden="true"></span>
+          <span class="tick br" aria-hidden="true"></span>
+          <div class="hud-strip">
+            <span>CANDIDATE / 01</span>
+            <span class="lock">Locked</span>
+          </div>
+        </div>
+
+        <div class="subject-meta">
+          <span>SUBJECT <b>GYH-2026</b></span>
+          <span>SCAN <b>100%</b></span>
+        </div>
+      </div>
+      <span class="subject-side" aria-hidden="true">Subject Acquired · 2026</span>
+    </aside>
+
+  </div>
+</header>
+
+<!-- ==================== 跑马灯 ==================== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>交给我<i></i>你放 100 个 percent 心</span>
+    <span class="on">Service First<i></i></span>
+    <span>以责任立身<i></i>以服务立信</span>
+    <span>Class Election 2026<i></i></span>
+    <span>团支部书记<i></i>学习委员</span>
+    <span class="on">No Empty Promises<i></i></span>
+    <span>交给我<i></i>你放 100 个 percent 心</span>
+    <span>Service First<i></i></span>
+    <span>交给我<i></i>你放 100 个 percent 心</span>
+    <span class="on">Service First<i></i></span>
+    <span>以责任立身<i></i>以服务立信</span>
+    <span>Class Election 2026<i></i></span>
+    <span>团支部书记<i></i>学习委员</span>
+    <span class="on">No Empty Promises<i></i></span>
+    <span>交给我<i></i>你放 100 个 percent 心</span>
+    <span>Service First<i></i></span>
+  </div>
+</div>
+
+<!-- ==================== 三个栏目 ==================== -->
+<section class="section wrap">
+  <div class="sec-top reveal">
+    <h2>竞选材料<small>Materials / 03 Items</small></h2>
+    <span class="count">03 / 03</span>
+  </div>
+
+  <nav class="entries" aria-label="竞选材料">
+    <a href="about.html" class="entry reveal" data-img="assets/portrait-blue.jpg" data-pos="50% 12%" data-label="01 / Statement">
+      <span class="idx">01</span>
+      <div class="body">
+        <h3>竞选自述</h3>
+        <span class="desc">了解我的想法</span>
+      </div>
+      <span class="en">Statement</span>
+      <span class="arrow" aria-hidden="true"></span>
+    </a>
+
+    <a href="plan.html" class="entry reveal" data-img="assets/portrait-blue.jpg" data-pos="50% 26%" data-label="02 / Strength">
+      <span class="idx">02</span>
+      <div class="body">
+        <h3>我的优势与愿望</h3>
+        <span class="desc">初心与目标</span>
+      </div>
+      <span class="en">Strength &amp; Wish</span>
+      <span class="arrow" aria-hidden="true"></span>
+    </a>
+
+    <a href="vote.html" class="entry reveal" data-img="assets/portrait-blue.jpg" data-pos="50% 48%" data-label="03 / Vote">
+      <span class="idx">03</span>
+      <div class="body">
+        <h3>投我一票</h3>
+        <span class="desc">支持我吧</span>
+      </div>
+      <span class="en">Vote</span>
+      <span class="arrow" aria-hidden="true"></span>
+    </a>
+  </nav>
+
+  <div class="spec reveal">
+    <div>
+      <b>02<sup>POS</sup></b>
+      <span>竞选岗位</span>
+    </div>
+    <div>
+      <b>03<sup>DOC</sup></b>
+      <span>竞选材料</span>
+    </div>
+    <div>
+      <b>100<sup>%</sup></b>
+      <span>兑现承诺</span>
+    </div>
+  </div>
+</section>
+
+<footer class="foot wrap">
+  <span class="brand-mark">GYH <b>·</b> 2026</span>
+  <span>Class / Election · 2026</span>
+  <span>交给我 · 你放 100 个 percent 心</span>
+</footer>
+
+<div class="peek" id="peek" aria-hidden="true">
+  <div class="peek-in">
+    <img src="assets/portrait-blue.jpg" alt="">
+    <i></i>
+    <span>View</span>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
